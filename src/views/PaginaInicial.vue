@@ -12,12 +12,14 @@
                     <h1>Insira seu Instagram ou site e deixe a IA criar para você</h1>
                     <p>Ao criar sua marca utilizando um dos links abaixo, conseguiremos identificar sua logo, cores e outros detalhes automaticamente!</p>
                 </div>
-                <div class="inputs">
-                    <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
-                    <input id="globe" type="text" placeholder="Víncular Website">
-                    <a href=""><small>Não tenho rede social ou site</small></a>
-                    <button>Continue</button>
-                </div>
+                <form action="">
+                    <div class="inputs">
+                        <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
+                        <input id="globe" type="text" placeholder="Víncular Website" required>
+                        <a href=""><small>Não tenho rede social ou site</small></a>
+                        <button type="submit">Continue</button>
+                    </div>
+                </form>
             </div>
         </main>
     </div>
@@ -67,11 +69,14 @@
     .paginaInicial main .inputCard .textos p {
         font-size: 0.8rem;
     }
+    .paginaInicial main .inputCard form {
+        width: 100%;
+    }
     .paginaInicial main .inputCard .inputs {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        width: inherit;
     }
     .paginaInicial main .inputCard .inputs input {
         height: 30px;
@@ -99,7 +104,7 @@
     }
     .paginaInicial main .inputCard .inputs button {
         height: 40px;
-        width: 100%;
+        width: inherit;
         background-color: #E73C7E;
         color: #fff;
         font-size: 1rem;
