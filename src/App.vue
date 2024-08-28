@@ -3,14 +3,12 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
-
-      
-  </header>
 
   <RouterView />
 </template>
 
-<style scoped>
-
+<style>
+  body {
+    font-family: "Inter", sans-serif;
+  }
 </style>
