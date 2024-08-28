@@ -1,16 +1,47 @@
-<script>
-        export default {
-            methods: {
-            validarForm() { // Adicionei o validar form para quando nada tiver sido escrito no input de link ele alerta e não troca de pagina
-                    const linkInput = document.getElementById('globe');
-                    if (linkInput.value.trim() === '') {
-                        alert('O campo "Víncular Website" é obrigatório.');
-                    } else {
-                        this.$router.push('pagina-form');
-                    }
+<script setup>
+    function validarForm() { // Adicionei o validar form para quando nada tiver sido escrito no input de link ele alerta e não troca de pagina
+        const linkInput = document.getElementById('globe');
+        const url = linkInput.value.trim();
+        if (linkInput.value.trim() === '') {
+            alert('O campo "Víncular Website" é obrigatório.');
+        } else {
+            fetchingScraping(url);
+            this.$router.push('pagina-form');
+        }
+    }
+
+    function fetchingScraping(url) {
+        const apiKey = 'A29XIW6JOUETI6A4E45DQG3BIJ0YQM41DG6QDWI7NLY1873AKVDWH2VHLGKUR88KGNU4JGOBFW6VBNX0';
+        fetch(`https://app.scrapingbee.com/api/v1?api_key=${apiKey}&url=${encodeURIComponent(url)}`, {
+            method: 'GET',
+            headers: {
+                'extract_rules':{
+                    "nomeMarca": "h1"
                 }
             }
-        }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('response deu erro ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, "text/html");
+                const titulos = doc.querySelectorAll('h1')
+                titulos.forEach(function(titulo) {
+                    const cadaTitulo = titulo.textContent;
+                    console.log(cadaTitulo)
+                    // Aqui que vai passar as infos para o forms final
+                })
+                // console.log(data);
+            })
+            .catch(error => {
+                console.error('problema com o fetch: ', error);
+            });
+    }
+
 
 </script>
 
