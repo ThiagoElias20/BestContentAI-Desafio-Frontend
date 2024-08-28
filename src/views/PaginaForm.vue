@@ -63,7 +63,7 @@
         color: #181818;
     }
     .paginaForm main .inputCard .textos h1 {
-        font-size: 1.15rem;
+        font-size: 1.38rem;
     }
     .paginaForm main .inputCard form {
         width: 100%;
