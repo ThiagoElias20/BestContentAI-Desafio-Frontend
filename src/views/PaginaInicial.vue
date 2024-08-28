@@ -1,4 +1,18 @@
-<script></script>
+<script>
+        export default {
+            methods: {
+            validarForm() { // Adicionei o validar form para quando nada tiver sido escrito no input de link ele alerta e não troca de pagina
+                    const linkInput = document.getElementById('globe');
+                    if (linkInput.value.trim() === '') {
+                        alert('O campo "Víncular Website" é obrigatório.');
+                    } else {
+                        this.$router.push('pagina-form');
+                    }
+                }
+            }
+        }
+
+</script>
 
 <template>
     <div class="paginaInicial">
@@ -17,7 +31,7 @@
                         <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
                         <input id="globe" type="text" placeholder="Víncular Website" required>
                         <a href=""><small>Não tenho rede social ou site</small></a>
-                        <button type="submit">Continue</button>
+                        <button @click.prevent="validarForm" type="submit">Continue</button>
                     </div>
                 </form>
             </div>
