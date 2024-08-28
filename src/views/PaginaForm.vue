@@ -7,16 +7,19 @@
                 <a href="" @click="$router.push('/')"><img src="../assets/seta.svg" alt=""></a>
             </div>
             <div class="inputCard">
-                <img src="../assets/socialmediaImg.svg" alt="imagem">
                 <div class="textos">
-                    <h1>Insira seu Instagram ou site e deixe a IA criar para você</h1>
-                    <p>Ao criar sua marca utilizando um dos links abaixo, conseguiremos identificar sua logo, cores e outros detalhes automaticamente!</p>
+                    <h1>Como devemos chamar sua marca?</h1>
                 </div>
                 <form action="">
                     <div class="inputs">
-                        <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
-                        <input id="globe" type="text" placeholder="Víncular Website" required>
-                        <a href=""><small>Não tenho rede social ou site</small></a>
+                        <label for="">Nome da Marca</label>
+                        <input type="text" placeholder="Ex: Dr. Gabriel; Roupas Multimarcas; Pizzaria dos Sabores">
+                        <label for="">Telefone</label>
+                        <input type="text" placeholder="(00) 0 0000 - 0000" required>
+                        <label for="">Email</label>
+                        <input type="text" placeholder="xxxxxxxxxxx@xxxxx.com" required>
+                        <label for="">Com o quê você trabalha?</label>
+                        <input type="text" placeholder="Descreva sua marca/produto, seu perfil em algumas palavras, para nossa IA entender melhor o seu contexto." required>
                         <button type="submit">Continue</button>
                     </div>
                 </form>
