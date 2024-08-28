@@ -9,8 +9,8 @@
                 <p>Ao criar sua marca utilizando um dos links abaixo, conseguiremos identificar sua logo, cores e outros detalhes automaticamente!</p>
             </div>
             <div class="inputs">
-                <input type="text" placeholder="Vincular Instagram (recomendado)">
-                <input type="text" placeholder="Víncular Website">
+                <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
+                <input id="globe" type="text" placeholder="Víncular Website">
                 <a href=""><small>Não tenho rede social ou site</small></a>
                 <button>Continue</button>
             </div>
@@ -62,6 +62,21 @@
         border: 1px solid #E0E1E6;
         outline: none;
     }
+    .paginaInicial .inputCard .inputs input:focus {
+        transition: all 0.5s ease;
+        border: 1px solid #E73C7E;
+        box-shadow: 0px 0px 3px #E73C7E;
+    }
+    .paginaInicial .inputCard .inputs input#instagram {
+        background: url(../assets/instagram.svg) no-repeat 7px;
+        background-size: 25px;
+        padding-left: 40px;
+    }
+    .paginaInicial .inputCard .inputs input#globe {
+        background: url(../assets/globe.svg) no-repeat 7px;
+        background-size: 30px;
+        padding-left: 40px;
+    }
     .paginaInicial .inputCard .inputs button {
         height: 40px;
         width: 100%;
@@ -71,6 +86,7 @@
         font-weight: 600;
         border: none;
         border-radius: 50px;
+        cursor: pointer;
     }
     .paginaInicial .inputCard .inputs a {
         text-transform: uppercase;
