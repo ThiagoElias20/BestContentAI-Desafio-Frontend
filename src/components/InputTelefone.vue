@@ -5,13 +5,25 @@
         label: String,
         placeholder: String
     })
+
+    function telefoneMascara(digitada) {
+        let caracter = digitada.target.value
+        if (!caracter) return; //para parar funcao
+
+        //regex
+        caracter = caracter.replace(/\D/g,'')
+        caracter = caracter.replace(/(\d{2})(\d)/,"($1) $2")
+        caracter = caracter.replace(/(\d)(\d{4})$/,"$1-$2")
+
+        digitada.target.value = caracter
+    }
 </script>
 
 <template>
     <div :class="inputClass">
         <label :for="inputId">
             <small>{{ label }}</small>
-            <input type="text" :id="inputId" :placeholder="placeholder" required>
+            <input type="text" :id="inputId" :placeholder="placeholder" @input="telefoneMascara" maxlength="15" required>
         </label>
     </div>
 </template>
