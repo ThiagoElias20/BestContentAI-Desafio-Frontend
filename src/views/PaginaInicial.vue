@@ -9,7 +9,6 @@
             alert('O campo "Víncular Website" é obrigatório.');
         } else {
             fetchingScraping(url);
-            router.push('pagina-form');
         }
     }
 
@@ -27,15 +26,12 @@
                 const doc = parser.parseFromString(data, "text/html");
 
                 const nomeMarca = doc.querySelector('h1').textContent
-                const descMarca = doc.querySelector('p').textContent
-                console.log(nomeMarca)
-                console.log(descMarca)
+                const descMarca = doc.querySelector('p.go1458712046').textContent //esse go1458712046 é classe de todas as descrições no sobre
 
                 const emailMarca = nomeMarca.toLowerCase().replace(" ", "") + '@emailfake.com';
-                console.log(emailMarca);
 
-                const telefoneMarca = doc.querySelector('.cdVUKT a:nth-of-type(2)')
-                telefoneMarca.classList.contains("ePrnud") || telefoneMarca.classList.contains("hMbDtx") ? console.log(telefoneMarca.textContent) : null
+                let telefoneMarca = doc.querySelector('.cdVUKT a:nth-of-type(2)')
+                telefoneMarca.classList.contains("ePrnud") || telefoneMarca.classList.contains("hMbDtx") ? telefoneMarca = telefoneMarca.textContent : telefoneMarca = null
                 /*
                 Classes do ReclameAqui que contem numeros de telefone:
                 ePrnud é para whatsapp
@@ -45,6 +41,8 @@
                 eLwHfG usado para levar a sites externos, como o ir para o atendimento ou site
                 há tambem a situação que não tem contato
                 */
+
+                router.push({ name: 'pagina-form', query: { nomeMarca, telefoneMarca, emailMarca, descMarca } })
             })
             .catch(error => {
                 console.error('problema com o fetch: ', error);
