@@ -1,16 +1,54 @@
-<script>
-        export default {
-            methods: {
-            validarForm() { // Adicionei o validar form para quando nada tiver sido escrito no input de link ele alerta e não troca de pagina
-                    const linkInput = document.getElementById('globe');
-                    if (linkInput.value.trim() === '') {
-                        alert('O campo "Víncular Website" é obrigatório.');
-                    } else {
-                        this.$router.push('pagina-form');
-                    }
-                }
-            }
+<script setup>
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
+
+    function validarForm() { // Adicionei o validar form para quando nada tiver sido escrito no input de link ele alerta e não troca de pagina
+        const linkInput = document.getElementById('globe');
+        const url = linkInput.value.trim();
+        if (linkInput.value.trim() === '') {
+            alert('O campo "Víncular Website" é obrigatório.');
+        } else {
+            fetchingScraping(url);
         }
+    }
+
+    function fetchingScraping(url) {
+        const apiKey = 'A29XIW6JOUETI6A4E45DQG3BIJ0YQM41DG6QDWI7NLY1873AKVDWH2VHLGKUR88KGNU4JGOBFW6VBNX0';
+        fetch(`https://app.scrapingbee.com/api/v1?api_key=${apiKey}&url=${url}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('response deu erro ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, "text/html");
+
+                const nomeMarca = doc.querySelector('h1').textContent
+                const descMarca = doc.querySelector('p.go1458712046').textContent //esse go1458712046 é classe de todas as descrições no sobre
+
+                const emailMarca = nomeMarca.toLowerCase().replace(" ", "") + '@emailfake.com';
+
+                let telefoneMarca = doc.querySelector('.cdVUKT a:nth-of-type(2)')
+                telefoneMarca.classList.contains("ePrnud") || telefoneMarca.classList.contains("hMbDtx") ? telefoneMarca = telefoneMarca.textContent : telefoneMarca = null
+                /*
+                Classes do ReclameAqui que contem numeros de telefone:
+                ePrnud é para whatsapp
+                hMbDtx é para telefone fixo
+
+                Sem numero de telefone:
+                eLwHfG usado para levar a sites externos, como o ir para o atendimento ou site
+                há tambem a situação que não tem contato
+                */
+
+                router.push({ name: 'pagina-form', query: { nomeMarca, telefoneMarca, emailMarca, descMarca } })
+            })
+            .catch(error => {
+                console.error('problema com o fetch: ', error);
+            });
+    }
+
 
 </script>
 

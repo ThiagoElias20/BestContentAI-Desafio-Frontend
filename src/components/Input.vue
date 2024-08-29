@@ -3,7 +3,8 @@
         inputClass: String,
         inputId: String,
         label: String,
-        placeholder: String
+        placeholder: String,
+        valorForm: String
     })
 </script>
 
@@ -11,7 +12,7 @@
     <div :class="inputClass">
         <label :for="inputId">
             <small>{{ label }}</small>
-            <input type="text" :id="inputId" :placeholder="placeholder" required>
+            <input type="text" :id="inputId" :placeholder="placeholder" :value="valorForm" required>
         </label>
     </div>
 </template>

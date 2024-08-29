@@ -3,7 +3,8 @@
         inputClass: String,
         inputId: String,
         label: String,
-        placeholder: String
+        placeholder: String,
+        valorForm: String
     })
 
     function telefoneMascara(digitada) {
@@ -23,7 +24,7 @@
     <div :class="inputClass">
         <label :for="inputId">
             <small>{{ label }}</small>
-            <input type="text" :id="inputId" :placeholder="placeholder" @input="telefoneMascara" maxlength="15" required>
+            <input type="text" :id="inputId" :placeholder="placeholder" @input="telefoneMascara" maxlength="15" :value="valorForm" required>
         </label>
     </div>
 </template>
