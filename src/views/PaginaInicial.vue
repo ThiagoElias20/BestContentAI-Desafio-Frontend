@@ -92,7 +92,6 @@
     .paginaInicial main .seta {
         position: absolute;
         top: 10px;
-        left: 10px;
     }
     .paginaInicial main .seta img {
         height: 20px;
@@ -180,5 +179,35 @@
         font-size: 0.7rem;
         font-weight: 600;
         color: #86868a;
+    }
+
+    @media (max-width: 668px) {
+        .paginaInicial {
+            margin: 0 4vw 0 4vw;
+        }
+        .paginaInicial main {
+            height: 95%;
+        }
+        .paginaInicial main .seta img {
+            height: 15px;
+        }
+        .paginaInicial main .inputCard {
+            padding: 50px 0 0 0;
+            height: inherit;
+        }
+        .paginaInicial main .inputCard img {
+            height: 225px;
+            margin-bottom: 25px;
+        }
+        .paginaInicial main .inputCard .inputs input {
+            height: 40px;
+            width: 87%;
+        }
+        .paginaInicial main .inputCard .inputs button {
+            height: 45px;
+        }
+        .paginaInicial main .inputCard .inputs a {
+            margin-bottom: 100px;
+        }
     }
 </style>
