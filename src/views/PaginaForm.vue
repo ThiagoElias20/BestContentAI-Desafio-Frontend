@@ -15,7 +15,7 @@
                 </div>
                 <form action="">
                     <div class="inputs">
-                        <Input inputClass="NomeMarca" inputId="nomeMarca" label="Nome da Marca" placeholder="Ex: Dr. Gabriel; Roupas Multimarcas; Pizzaria dos Sabores"/>
+                        <Input valor-form="" inputClass="NomeMarca" inputId="nomeMarca" label="Nome da Marca" placeholder="Ex: Dr. Gabriel; Roupas Multimarcas; Pizzaria dos Sabores"/>
                         <InputTelefone inputClass="Telefone" inputId="telefone" label="Telefone" placeholder="(00) 0 0000 - 0000" />
                         <Input inputClass="Email" inputId="email" label="Email" placeholder="xxxxxxxxxxx@xxxxx.com" @input="telefoneMascara"/>
                         <Input inputClass="Desc" inputId="desc" label="Com o quê você trabalha?" placeholder="Descreva sua marca/produto, seu perfil em algumas palavras, para nossa IA entender melhor o seu contexto."/>

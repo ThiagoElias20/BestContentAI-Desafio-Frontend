@@ -31,19 +31,18 @@
                 console.log(nomeMarca)
                 console.log(descMarca)
 
-                const telefoneMarca = doc.querySelector('.cdVUKT a:nth-of-type(2)')
-                //console.log(doc.querySelector('.cdVUKT').outerHTML);
-                console.log(telefoneMarca.classList)
-                // telefoneMarca.classList.contains("ePrnud") || telefoneMarca.classList.contains("hMbDtx") ? console.log(telefoneMarca.textContent) : null
-                /*
-                Todos os numeros de telefone ficam na classe hLzmtv
+                const emailMarca = nomeMarca.toLowerCase().replace(" ", "") + '@emailfake.com';
+                console.log(emailMarca);
 
-                Numeros de telefone:
+                const telefoneMarca = doc.querySelector('.cdVUKT a:nth-of-type(2)')
+                telefoneMarca.classList.contains("ePrnud") || telefoneMarca.classList.contains("hMbDtx") ? console.log(telefoneMarca.textContent) : null
+                /*
+                Classes do ReclameAqui que contem numeros de telefone:
                 ePrnud é para whatsapp
                 hMbDtx é para telefone fixo
 
                 Sem numero de telefone:
-                eLwHfG usado para levar a sites externos, como o ir para o atendimento
+                eLwHfG usado para levar a sites externos, como o ir para o atendimento ou site
                 há tambem a situação que não tem contato
                 */
             })
