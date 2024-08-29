@@ -1,4 +1,7 @@
 <script setup>
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
+
     function validarForm() { // Adicionei o validar form para quando nada tiver sido escrito no input de link ele alerta e não troca de pagina
         const linkInput = document.getElementById('globe');
         const url = linkInput.value.trim();
@@ -6,20 +9,13 @@
             alert('O campo "Víncular Website" é obrigatório.');
         } else {
             fetchingScraping(url);
-            this.$router.push('pagina-form');
+            router.push('pagina-form');
         }
     }
 
     function fetchingScraping(url) {
         const apiKey = 'A29XIW6JOUETI6A4E45DQG3BIJ0YQM41DG6QDWI7NLY1873AKVDWH2VHLGKUR88KGNU4JGOBFW6VBNX0';
-        fetch(`https://app.scrapingbee.com/api/v1?api_key=${apiKey}&url=${encodeURIComponent(url)}`, {
-            method: 'GET',
-            headers: {
-                'extract_rules':{
-                    "nomeMarca": "h1"
-                }
-            }
-        })
+        fetch(`https://app.scrapingbee.com/api/v1?api_key=${apiKey}&url=${url}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('response deu erro ' + response.statusText);
@@ -29,13 +25,27 @@
             .then(data => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(data, "text/html");
-                const titulos = doc.querySelectorAll('h1')
-                titulos.forEach(function(titulo) {
-                    const cadaTitulo = titulo.textContent;
-                    console.log(cadaTitulo)
-                    // Aqui que vai passar as infos para o forms final
-                })
-                // console.log(data);
+
+                const nomeMarca = doc.querySelector('h1').textContent
+                const descMarca = doc.querySelector('p').textContent
+                console.log(nomeMarca)
+                console.log(descMarca)
+
+                const telefoneMarca = doc.querySelector('.cdVUKT a:nth-of-type(2)')
+                //console.log(doc.querySelector('.cdVUKT').outerHTML);
+                console.log(telefoneMarca.classList)
+                // telefoneMarca.classList.contains("ePrnud") || telefoneMarca.classList.contains("hMbDtx") ? console.log(telefoneMarca.textContent) : null
+                /*
+                Todos os numeros de telefone ficam na classe hLzmtv
+
+                Numeros de telefone:
+                ePrnud é para whatsapp
+                hMbDtx é para telefone fixo
+
+                Sem numero de telefone:
+                eLwHfG usado para levar a sites externos, como o ir para o atendimento
+                há tambem a situação que não tem contato
+                */
             })
             .catch(error => {
                 console.error('problema com o fetch: ', error);
