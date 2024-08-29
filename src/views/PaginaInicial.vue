@@ -8,6 +8,7 @@
         if (linkInput.value.trim() === '') {
             alert('O campo "Víncular Website" é obrigatório.');
         } else {
+            loadingButton(); // Faz o botao entrar em estado de loading
             fetchingScraping(url);
         }
     }
@@ -49,6 +50,11 @@
             });
     }
 
+    function loadingButton() {
+        const butloading = document.querySelector(".loading");
+        butloading.style.display = 'block';
+    }
+
 
 </script>
 
@@ -66,10 +72,18 @@
                 </div>
                 <form action="">
                     <div class="inputs">
-                        <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
-                        <input id="globe" type="text" placeholder="Víncular Website" required>
+                        <div class="input">
+                            <img id="imginstagram" src="../assets/instagram.svg" alt="">
+                            <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
+                        </div>
+                        <div class="input">
+                            <img id="imgglobe" src="../assets/globe.svg" alt="">
+                            <input id="globe" type="text" placeholder="Víncular Website" required>
+                        </div>
                         <a href=""><small>Não tenho rede social ou site</small></a>
-                        <button @click.prevent="validarForm" type="submit">Continue</button>
+                        <button @click.prevent="validarForm" type="submit">Continue
+                            <div class="loading"></div>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -93,6 +107,10 @@
         position: absolute;
         top: 10px;
         left: 10px;
+    }
+    .paginaInicial main .seta:hover {
+        left: 5px;
+        transition: all 0.2s ease-in-out;
     }
     .paginaInicial main .seta img {
         height: 20px;
@@ -130,21 +148,35 @@
         align-items: center;
         width: inherit;
     }
-    .paginaInicial main .inputCard .inputs input {
+    .paginaInicial main .inputCard .inputs .input {
         height: 30px;
         width: 225px;
+        display: flex;
+        align-items: center;
         margin-bottom: 15px;
+        position: relative;
+    }
+    .paginaInicial main .inputCard .inputs .input input {
+        width: 100%;
+        height: 90%;
+        border: none;
+        padding-left: 40px;
+        outline: none;
         border-radius: 5px;
         border: 1px solid #E0E1E6;
-        outline: none;
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
-    .paginaInicial main .inputCard .inputs input:focus {
+    .paginaInicial main .inputCard .inputs .input img {
+        height: 18px;
+        margin: 0 10px 0 10px;
+        position: absolute;
+    }
+    .paginaInicial main .inputCard .inputs .input input:focus {
         transition: all 0.5s ease;
         border: 1px solid #E73C7E;
         box-shadow: 0px 0px 3px #E73C7E;
     }
-    .paginaInicial main .inputCard .inputs input#instagram {
+    /* .paginaInicial main .inputCard .inputs input#instagram {
         background: url(../assets/instagram.svg) no-repeat 7px;
         background-size: 25px;
         padding-left: 40px;
@@ -153,7 +185,7 @@
         background: url(../assets/globe.svg) no-repeat 7px;
         background-size: 30px;
         padding-left: 40px;
-    }
+    } */
     .paginaInicial main .inputCard .inputs button {
         height: 40px;
         width: inherit;
@@ -164,7 +196,31 @@
         border: none;
         border-radius: 50px;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
     }
+    .paginaInicial main .inputCard .inputs button .loading {
+        display: none;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #fff; 
+        border-radius: 50px;
+        animation: spin 1s linear infinite;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 25px;
+    }
+    @keyframes spin { 
+        0% { 
+            transform: rotate(0deg); 
+        } 
+    
+        100% { 
+            transform: rotate(360deg); 
+        } 
+    } 
     .paginaInicial main .inputCard .inputs button:hover {
         background-color: #FC2E7E;
         transition: all 0.3s ease;
@@ -180,5 +236,83 @@
         font-size: 0.7rem;
         font-weight: 600;
         color: #86868a;
+    }
+    .paginaInicial main .inputCard .inputs a:hover {
+        color: #E73C7E;
+        transition: all 0.3s ease;
+    }
+
+    @media (max-width: 668px) {
+        .paginaInicial {
+            margin: 0 4vw 0 4vw;
+        }
+        .paginaInicial main {
+            height: 95%;
+        }
+        .paginaInicial main .seta {
+            left: 0px;
+        }
+        .paginaInicial main .seta img {
+            height: 15px;
+        }
+        .paginaInicial main .inputCard {
+            padding: 50px 0 0 0;
+            height: inherit;
+        }
+        .paginaInicial main .inputCard img {
+            height: 225px;
+            margin-bottom: 25px;
+        }
+        .paginaInicial main .inputCard .inputs .input {
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .paginaInicial main .inputCard .inputs .input img {
+            height: 22px;
+            margin: 0 20px 0 20px;
+        }
+        .paginaInicial main .inputCard .inputs .input input {
+            height: 40px;
+            width: 87%;
+            font-size: 0.68rem;
+            padding-left: 60px;
+        }
+        .paginaInicial main .inputCard .inputs button {
+            height: 45px;
+        }
+        .paginaInicial main .inputCard .inputs a {
+            margin-bottom: 90px;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        /* Estilização para telas maiores */
+        .paginaInicial {
+            margin: 0 20vw 0 20vw;
+        }
+        .paginaInicial main .inputCard {
+            width: 100%;
+            max-width: 425px;
+            min-width: 100px;
+        }
+        .paginaInicial main .inputCard img {
+            height: 225px;
+        }
+        .paginaInicial main .inputCard .inputs .input {
+            width: 250px;
+            height: 38px;
+        }
+        .paginaInicial main .inputCard .inputs .input img {
+            margin: 0 17px 0 17px;
+        }
+        .paginaInicial main .inputCard .inputs .input input {
+            width: 100%;
+            font-size: 0.75rem;
+            padding-left: 45px;
+        }
+        .paginaInicial main .inputCard .inputs button {
+            font-size: 1.1rem;
+        }
     }
 </style>
