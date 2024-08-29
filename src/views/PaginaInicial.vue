@@ -66,8 +66,14 @@
                 </div>
                 <form action="">
                     <div class="inputs">
-                        <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
-                        <input id="globe" type="text" placeholder="Víncular Website" required>
+                        <div class="input">
+                            <img id="imginstagram" src="../assets/instagram.svg" alt="">
+                            <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
+                        </div>
+                        <div class="input">
+                            <img id="imgglobe" src="../assets/globe.svg" alt="">
+                            <input id="globe" type="text" placeholder="Víncular Website" required>
+                        </div>
                         <a href=""><small>Não tenho rede social ou site</small></a>
                         <button @click.prevent="validarForm" type="submit">Continue</button>
                     </div>
@@ -129,21 +135,35 @@
         align-items: center;
         width: inherit;
     }
-    .paginaInicial main .inputCard .inputs input {
+    .paginaInicial main .inputCard .inputs .input {
         height: 30px;
         width: 225px;
+        display: flex;
+        align-items: center;
         margin-bottom: 15px;
+        position: relative;
+    }
+    .paginaInicial main .inputCard .inputs .input input {
+        width: 100%;
+        height: 90%;
+        border: none;
+        padding-left: 40px;
+        outline: none;
         border-radius: 5px;
         border: 1px solid #E0E1E6;
-        outline: none;
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
-    .paginaInicial main .inputCard .inputs input:focus {
+    .paginaInicial main .inputCard .inputs .input img {
+        height: 18px;
+        margin: 0 10px 0 10px;
+        position: absolute;
+    }
+    .paginaInicial main .inputCard .inputs .input input:focus {
         transition: all 0.5s ease;
         border: 1px solid #E73C7E;
         box-shadow: 0px 0px 3px #E73C7E;
     }
-    .paginaInicial main .inputCard .inputs input#instagram {
+    /* .paginaInicial main .inputCard .inputs input#instagram {
         background: url(../assets/instagram.svg) no-repeat 7px;
         background-size: 25px;
         padding-left: 40px;
@@ -152,7 +172,7 @@
         background: url(../assets/globe.svg) no-repeat 7px;
         background-size: 30px;
         padding-left: 40px;
-    }
+    } */
     .paginaInicial main .inputCard .inputs button {
         height: 40px;
         width: inherit;
