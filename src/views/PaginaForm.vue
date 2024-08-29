@@ -8,6 +8,15 @@
     const telefoneMarca = route.query.telefoneMarca;
     const emailMarca = route.query.emailMarca;
     const descMarca = route.query.descMarca;
+
+    function validarForm() {
+        loadingButton();
+    }
+
+    function loadingButton() {
+        const butloading = document.querySelector(".loading");
+        butloading.style.display = 'block';
+    }
 </script>
 
 <template>
@@ -26,7 +35,9 @@
                         <InputTelefone v-model:valor-form="telefoneMarca" inputClass="Telefone" inputId="telefone" label="Telefone" placeholder="(00) 0 0000 - 0000" />
                         <Input v-model:valor-form="emailMarca" inputClass="Email" inputId="email" label="Email" placeholder="xxxxxxxxxxx@xxxxx.com" @input="telefoneMascara"/>
                         <Input v-model:valor-form="descMarca" inputClass="Desc" inputId="desc" label="Com o quê você trabalha?" placeholder="Descreva sua marca/produto, seu perfil em algumas palavras, para nossa IA entender melhor o seu contexto."/>
-                        <button type="submit">Continue</button>
+                        <button @click.prevent="validarForm">Continue
+                            <div class="loading"></div>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -101,6 +112,30 @@
         border: none;
         border-radius: 50px;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .paginaForm main .inputCard .inputs button .loading {
+        display: none;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #fff; 
+        border-radius: 50px;
+        animation: spin 1s linear infinite;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 25px;
+    }
+    @keyframes spin { 
+        0% { 
+            transform: rotate(0deg); 
+        } 
+    
+        100% { 
+            transform: rotate(360deg); 
+        } 
     }
     .paginaForm main .inputCard .inputs button:hover {
         background-color: #FC2E7E;

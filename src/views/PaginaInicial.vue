@@ -8,6 +8,7 @@
         if (linkInput.value.trim() === '') {
             alert('O campo "Víncular Website" é obrigatório.');
         } else {
+            loadingButton(); // Faz o botao entrar em estado de loading
             fetchingScraping(url);
         }
     }
@@ -49,6 +50,11 @@
             });
     }
 
+    function loadingButton() {
+        const butloading = document.querySelector(".loading");
+        butloading.style.display = 'block';
+    }
+
 
 </script>
 
@@ -75,7 +81,9 @@
                             <input id="globe" type="text" placeholder="Víncular Website" required>
                         </div>
                         <a href=""><small>Não tenho rede social ou site</small></a>
-                        <button @click.prevent="validarForm" type="submit">Continue</button>
+                        <button @click.prevent="validarForm" type="submit">Continue
+                            <div class="loading"></div>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -188,7 +196,31 @@
         border: none;
         border-radius: 50px;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
     }
+    .paginaInicial main .inputCard .inputs button .loading {
+        display: none;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #fff; 
+        border-radius: 50px;
+        animation: spin 1s linear infinite;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 25px;
+    }
+    @keyframes spin { 
+        0% { 
+            transform: rotate(0deg); 
+        } 
+    
+        100% { 
+            transform: rotate(360deg); 
+        } 
+    } 
     .paginaInicial main .inputCard .inputs button:hover {
         background-color: #FC2E7E;
         transition: all 0.3s ease;
