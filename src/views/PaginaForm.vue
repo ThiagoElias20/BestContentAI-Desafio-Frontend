@@ -1,6 +1,7 @@
 <script setup> 
     import Input from '../components/Input.vue';
-    import InputTelefone from '@/components/InputTelefone.vue';
+    import InputTelefone from '../components/InputTelefone.vue';
+    import Popup from '../components/Popup.vue';
     import { useRoute } from 'vue-router';
 
     const route = useRoute();
@@ -10,12 +11,11 @@
     const descMarca = route.query.descMarca;
 
     function validarForm() {
-        loadingButton();
-    }
-
-    function loadingButton() {
         const butloading = document.querySelector(".loading");
         butloading.style.display = 'block';
+        const popup = document.querySelector('.Popup');
+        popup.style.display = 'block';
+        butloading.style.display = 'none';
     }
 </script>
 
@@ -31,10 +31,10 @@
                 </div>
                 <form action="">
                     <div class="inputs">
-                        <Input v-model:valor-form="nomeMarca" inputClass="NomeMarca" inputId="nomeMarca" label="Nome da Marca" placeholder="Ex: Dr. Gabriel; Roupas Multimarcas; Pizzaria dos Sabores"/>
+                        <Input v-model:valor-form="nomeMarca" inputClass="NomeMarca" inputId="nomeMarca" label="Nome da Marca *" placeholder="Ex: Dr. Gabriel; Roupas Multimarcas; Pizzaria dos Sabores"/>
                         <InputTelefone v-model:valor-form="telefoneMarca" inputClass="Telefone" inputId="telefone" label="Telefone" placeholder="(00) 0 0000 - 0000" />
                         <Input v-model:valor-form="emailMarca" inputClass="Email" inputId="email" label="Email" placeholder="xxxxxxxxxxx@xxxxx.com" @input="telefoneMascara"/>
-                        <Input v-model:valor-form="descMarca" inputClass="Desc" inputId="desc" label="Com o quê você trabalha?" placeholder="Descreva sua marca/produto, seu perfil em algumas palavras, para nossa IA entender melhor o seu contexto."/>
+                        <Input v-model:valor-form="descMarca" inputClass="Desc" inputId="desc" label="Com o quê você trabalha? *" placeholder="Descreva sua marca/produto, seu perfil em algumas palavras, para nossa IA entender melhor o seu contexto."/>
                         <button @click.prevent="validarForm">Continue
                             <div class="loading"></div>
                         </button>
@@ -43,6 +43,7 @@
             </div>
         </main>
     </div>
+    <Popup class="Popup" :nomeMarca="nomeMarca"/>
 </template>
 
 <style scoped>
