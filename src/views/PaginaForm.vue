@@ -51,6 +51,10 @@
         top: 10px;
         left: 10px;
     }
+    .paginaForm main .seta:hover {
+        left: 5px;
+        transition: all 0.2s ease-in-out;
+    }
     .paginaForm main .seta img {
         height: 20px;
     }
@@ -71,6 +75,7 @@
     }
     .paginaForm main .inputCard .textos h1 {
         font-size: 1.38rem;
+        margin-bottom: 40px;
     }
     .paginaForm main .inputCard form {
         width: 100%;
@@ -104,5 +109,27 @@
     .paginaForm main .inputCard .inputs button:active{
         transform: translateY(2px); 
         transition: all 0.1s ease;
+    }
+
+    @media (max-width: 668px) {
+        .paginaForm {
+            margin: 0 4vw 0 4vw;
+        }
+        .paginaForm main {
+            height: 95%;
+        }
+        .paginaForm main .seta img {
+            height: 15px;
+        }
+        .paginaForm main .inputCard {
+            padding: 50px 0 0 0;
+            height: inherit;
+        }
+        .paginaForm main .inputCard .inputs button {
+            height: 45px;
+        }
+        .paginaForm main .inputCard .inputs a {
+            margin-bottom: 100px;
+        }
     }
 </style>

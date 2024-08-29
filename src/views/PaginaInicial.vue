@@ -98,6 +98,11 @@
     .paginaInicial main .seta {
         position: absolute;
         top: 10px;
+        left: 10px;
+    }
+    .paginaInicial main .seta:hover {
+        left: 5px;
+        transition: all 0.2s ease-in-out;
     }
     .paginaInicial main .seta img {
         height: 20px;
@@ -200,6 +205,10 @@
         font-weight: 600;
         color: #86868a;
     }
+    .paginaInicial main .inputCard .inputs a:hover {
+        color: #E73C7E;
+        transition: all 0.3s ease;
+    }
 
     @media (max-width: 668px) {
         .paginaInicial {
@@ -207,6 +216,9 @@
         }
         .paginaInicial main {
             height: 95%;
+        }
+        .paginaInicial main .seta {
+            left: 0px;
         }
         .paginaInicial main .seta img {
             height: 15px;
@@ -219,15 +231,56 @@
             height: 225px;
             margin-bottom: 25px;
         }
-        .paginaInicial main .inputCard .inputs input {
+        .paginaInicial main .inputCard .inputs .input {
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .paginaInicial main .inputCard .inputs .input img {
+            height: 22px;
+            margin: 0 20px 0 20px;
+        }
+        .paginaInicial main .inputCard .inputs .input input {
             height: 40px;
             width: 87%;
+            font-size: 0.68rem;
+            padding-left: 60px;
         }
         .paginaInicial main .inputCard .inputs button {
             height: 45px;
         }
         .paginaInicial main .inputCard .inputs a {
-            margin-bottom: 100px;
+            margin-bottom: 90px;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        /* Estilização para telas maiores */
+        .paginaInicial {
+            margin: 0 20vw 0 20vw;
+        }
+        .paginaInicial main .inputCard {
+            width: 100%;
+            max-width: 425px;
+            min-width: 100px;
+        }
+        .paginaInicial main .inputCard img {
+            height: 225px;
+        }
+        .paginaInicial main .inputCard .inputs .input {
+            width: 250px;
+            height: 38px;
+        }
+        .paginaInicial main .inputCard .inputs .input img {
+            margin: 0 17px 0 17px;
+        }
+        .paginaInicial main .inputCard .inputs .input input {
+            width: 100%;
+            font-size: 0.75rem;
+            padding-left: 45px;
+        }
+        .paginaInicial main .inputCard .inputs button {
+            font-size: 1.1rem;
         }
     }
 </style>
