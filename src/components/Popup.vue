@@ -13,7 +13,7 @@
     <div class="popup">
         <div class="popupCard">
             <div class="close">
-                <button @click="closePopup"><img src="../assets/close.svg" alt=""></button>
+                <button @click="closePopup"><img src="../assets/icons/close.svg" alt=""></button>
             </div>
             <div class="conteudo">
                 <h1>Sucesso!</h1>

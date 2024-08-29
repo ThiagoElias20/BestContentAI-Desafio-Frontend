@@ -23,7 +23,7 @@
     <div class="paginaForm">
         <main>
             <div class="seta">
-                <a href="" @click="$router.push('/')"><img src="../assets/seta.svg" alt=""></a>
+                <a href="" @click="$router.push('/')"><img src="../assets/icons/seta.svg" alt=""></a>
             </div>
             <div class="inputCard">
                 <div class="textos">

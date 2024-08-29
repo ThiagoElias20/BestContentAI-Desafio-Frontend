@@ -62,7 +62,7 @@
     <div class="paginaInicial">
         <main>
             <div class="seta">
-                <a href=""><img src="../assets/seta.svg" alt=""></a>
+                <a href=""><img src="../assets/icons/seta.svg" alt=""></a>
             </div>
             <div class="inputCard">
                 <img src="../assets/socialmediaImg.svg" alt="imagem">
@@ -73,11 +73,11 @@
                 <form action="">
                     <div class="inputs">
                         <div class="input">
-                            <img id="imginstagram" src="../assets/instagram.svg" alt="">
+                            <img id="imginstagram" src="../assets/icons/instagram.svg" alt="">
                             <input id="instagram" type="text" placeholder="Vincular Instagram (recomendado)">
                         </div>
                         <div class="input">
-                            <img id="imgglobe" src="../assets/globe.svg" alt="">
+                            <img id="imgglobe" src="../assets/icons/globe.svg" alt="">
                             <input id="globe" type="text" placeholder="Víncular Website" required>
                         </div>
                         <a href=""><small>Não tenho rede social ou site</small></a>
